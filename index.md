@@ -2,6 +2,44 @@
 layout: default
 ---
 
+
+## Hackathons
+
+### uCode (UniZar) 2018
+
+Android instant app that shows product info based on a NFC tag.
+The data is obtained through an scrapper.
+
+_Python, Java, Android, Django, DjangoRestFramework, BeautifulSoup, Retrofit_
+
+[Link to repo](https://github.com/IEEE-BCN-SB/uCode)
+|
+[Presentation [es]](https://docs.google.com/presentation/d/1-BCeal05KQ9Jy7fsLAOdLrWWHXRo1JFt3rG3fmLXaKU/edit?usp=sharing)
+
+### UDG Local Hack Day 2017
+Password-based door access control with Arduino and a REST API to authentication.
+
+_Python, Django, DjangoRestFramework, OpenAPI, Arduino, C_
+
+[Link to repo](https://github.com/fevsea/udg)
+
+### Lauzhack 2017
+Android app that consumes a REST API to show a list with all the missions of ESA.
+
+_Python, Java, Android, Django, DjangoRestFramework, BeautifulSoup, Retrofit_
+
+[Link to repo](https://github.com/fevsea/lauzhack17)
+|
+[Link to devpost](https://devpost.com/software/lauzhack17-7r1jct)
+
+
+--------------------------------------------------------
+
+
+
+
+
+
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
@@ -113,11 +151,3 @@ end
 <dt>Color</dt>
 <dd>Green</dd>
 </dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```

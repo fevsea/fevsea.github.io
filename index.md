@@ -13,8 +13,8 @@ _Linux, material, speaker_
 [Link to material [es]](https://github.com/IEEE-BCN-SB/linux-terminal-workshop)
 
 ### Python introductory course
-This was a free course organized by IEEE BCN SB in colaboration with LinucUPC held in 2017 and 2018.
-For the later edition a jupyter notebook was created with teory and problems (some material was lost).
+This was a free course organized by IEEE BCN SB in collaboration with LinucUPC held in 2017 and 2018.
+For the later edition a jupyter notebook was created with theory and problems (some material was lost).
 
 _Python, Jupyter notebook, material, speaker_
 
@@ -23,7 +23,7 @@ _Python, Jupyter notebook, material, speaker_
 ## Projects
 
 ### IEEE BCN SB website
-Website of the IEEE BCN (UPC) Studen branch. All the backend is from scratch, but the backend is from a template.
+Website of the IEEE BCN (UPC) Student branch. All the backend is from scratch, but the backend is from a template.
 
 _Python, Django_
 
@@ -37,20 +37,26 @@ It's a rober-like robot powered by a Raspberry Pi.
 The interesting part of the project is that can be programmed from a website,
 no need to compile or connect cables. The code can be written in Python, JS or through blocks using the Blockly library.
 
+
+ ![alt text](https://thumb.ibb.co/h9U2Wn/photo_2018_04_10_20_29_49.jpg)
+
 _Python, Raspberry Pi, sockets, JS, Blockly_
 
+[Link to repo](https://github.com/fevsea/blockly_robt)
+
 ### planeTracer
-The objective of this project is pull dump1090 for air trafic and store it in a database.
+The objective of this project is pull dump1090 for air traffic and store it in a database.
 
 _Python, SDR, SQL_
 
+[Link to repo](https://github.com/fevsea/planeTracer)
 
 ## Hackathons
 
 ### uCode (UniZar) 2018
 
 Android instant app that shows product info based on a NFC tag.
-The data is obtained through an scrapper.
+The data is obtained through a scrapper.
 
 _Python, Java, Android, Django, DjangoRestFramework, BeautifulSoup, Retrofit_
 

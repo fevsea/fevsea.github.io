@@ -1,8 +1,14 @@
 <section class="hero {% if page.hero_height %} {{ page.hero_height }} {% else %} is-medium {% endif %} is-bold is-primary" {% if page.hero_image %} style="background: url('{{ page.hero_image }}') no-repeat center center; background-size: cover;" {% endif %}>
-    <div class="hero-body">
-        <div class="container">
-            <p class="title is-2">{{ page.title }}</p>
-            <p class="subtitle is-3">{{ page.subtitle }}</p>
+    <div class="hero-body" style="align-self: center">
+        <div class="container" style="display: inline-block; width: auto; margin-left: 4em">
+          <p class="title is-2">{{ page.title }}</p>
+          <p class="subtitle is-3">{{ page.subtitle }}</p>
+        </div>
+        <div class="container" style="display: inline-block; width: auto; margin-left: 4em">
+          <p>Alejandro Agustin</p>
+          <p>alejandro.a.es@ieee.org</p>
+          <p>Barcelona, Spain</p>
+          <a> FInd me on: <a href="//github.com/fevsea" style="font-weight: bold;">GitHub</a> and  <a href="//www.kaggle.com/fevsea/" style="font-weight: bold;">Kaggle</a>
         </div>
     </div>
 </section>

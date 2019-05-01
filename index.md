@@ -1,6 +1,6 @@
 ---
-title: Page with Tabs
-subtitle: Demo page with tabs
+title: Project directory
+subtitle: Data-driven projects
 layout: page
 show_sidebar: false
 tabs: example_tabs

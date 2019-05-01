@@ -1,6 +1,6 @@
 ---
-title: Page with Tabs
-subtitle: Demo page with tabs
+title: Project directory
+subtitle: Talks given
 layout: page
 show_sidebar: false
 tabs: example_tabs

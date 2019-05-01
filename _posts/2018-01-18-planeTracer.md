@@ -2,7 +2,7 @@
 title: Plane tracer
 layout: post
 category: projects
-image:
+image: /assets/img/planeTracer.png
 tags: Python SDR SQL
 source: //github.com/fevsea/planeTracer
 ---

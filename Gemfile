@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-gemspec
+#gemspec
 
 group :jekyll_plugins do
     gem "jekyll-feed", "~> 0.6"

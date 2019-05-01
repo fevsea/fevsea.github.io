@@ -1,109 +1,343 @@
-# The Architect theme 
+# bulma-clean-theme
 
-[![Build Status](https://travis-ci.org/pages-themes/architect.svg?branch=master)](https://travis-ci.org/pages-themes/architect) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-architect.svg)](https://badge.fury.io/rb/jekyll-theme-architect)
+[![Gem Version](https://badge.fury.io/rb/bulma-clean-theme.svg)](https://badge.fury.io/rb/bulma-clean-theme)
 
-*Architect is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/architect), or even [use it today](#usage).*
+This is a clean and simple Jekyll Theme built with the [Bulma](https://bulma.io/) framework, providing a modern looking site to start with. 
 
-![Thumbnail of Architect](thumbnail.png)
+## Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+    * [Pages](#pages)
+    * [Posts](#posts)
+    * [Navigation](#navigation)
+    * [Colours and Styles](#colours-and-styles)
+    * [Sidebar Visibility](#sidebar-visibility)
+    * [Menubar](#menubar)
+    * [Tabs](#tabs)
+    * [Google Analytics](#google-analytics)
+    * [Footer](#footer)
+    * [Products](#products)
+* [Contributing](#contributing)
+* [Development](#development)
+* [Licence](#licence)
+
+
+## Installation
+
+Add this line to your Jekyll site's `Gemfile`:
+
+```ruby
+gem "bulma-clean-theme"
+```
+
+And add this line to your Jekyll site's `_config.yml`:
+
+```yaml
+theme: bulma-clean-theme
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install bulma-clean-theme
 
 ## Usage
 
-To use the Architect theme:
+### Pages 
 
-1. Add the following to your site's `_config.yml`:
+Create your pages as individual markdown files and use the `layout: page` for normal pages. Set the pages title and subtitle in the frontmatter and it will appear in the hero.
 
-    ```yml
-    theme: jekyll-theme-architect
-    ```
+**New in 0.2** 
+Heros can now display a background image if you provide a `hero_image: /path/to/image.jpg` setting in your page frontmatter, or in the [defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) in your sites `_config.yml`
 
-2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
+You can also set the height of the hero by providing a bulma hero height class in your frontmatter, such as `hero_height: is-fullwidth`. If you do not provide this, it will revert to is-medium 
 
-    ```ruby
-    gem "github-pages", group: :jekyll_plugins
-    ```
+### Posts
 
-## Customizing
+If you want posts, create a `_posts` directory to store your posts as per normal Jekyll usage, with the `layout: post`. Next create a `blog` directory with an index.html file that has `layout: blog`
 
-### Configuration variables
+**New in 0.2** It will now display an image in the blog page if you set `image: /path/to/image.jpg` in your post's or page's frontmatter, or in the [defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) in your sites `_config.yml`
 
-Architect will respect the following variables, if set in your site's `_config.yml`:
+You can also set the height of the hero by providing a bulma hero height class in your frontmatter, such as `hero_height: is-fullwidth`. If you do not provide this, it will revert to is-medium
 
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
+
+### Navigation
+
+For the top navigation, create a navigation.yml file in `_data` directory with the following format with the pages you want to include in the top navigation. You can now also add items to a dropdown menu.
+
+```yaml
+- name: Page 1
+  link: /page-1/
+- name: Blog
+  link: /blog/
+  dropdown: 
+    - name: Page 2
+      link: /page-2/
 ```
 
-Additionally, you may choose to set the following optional variables:
+For the current page to have an active class, ensure the `link:` format matches your [permalink](https://jekyllrb.com/docs/permalinks/#extensionless-permalinks) format. The above example will work with `permalink: pretty` setting in your `_config.yml`
 
-```yml
-show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
+### Colours and Styles
+
+To overwrite the primary theme colour, set a sass variable in `assets/css/app.scss` before importing `main`
+
+```
+---
+---
+$primary: #333333;
+// Import Main CSS file from theme
+@import "main";
 ```
 
-### Stylesheet
+You can overwrite any of the [Bulma initial variables](http://versions.bulma.io/0.7.0/documentation/overview/variables/) in this way as long as they are declared before the `@import "main"'`
 
-If you'd like to add your own custom styles:
+### Sidebar Visibility
 
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
+**New in 0.2**
 
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
+If you want to show the sidebar with latest posts then set `show_sidebar: true` in the pages frontmatter, or in the [defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) in your sites `_config.yml`
 
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
+### Menubar
 
-### Layouts
+**New in 0.3**
 
-If you'd like to change the theme's HTML layout:
+The menubar gets its content from a data file in your site's `_data` directory. Simply set the name of your data file in the page's menubar setting in the frontmatter. 
 
-1. [Copy the original template](https://github.com/pages-themes/architect/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-2. Create a file called `/_layouts/default.html` in your site
-3. Paste the default layout content copied in the first step
-4. Customize the layout as you'd like
+```yml
+show_sidebar: false
+menubar: example_menu
+```
 
-### Overriding GitHub-generated URLs
+You will probably want to disable the show_sidebar otherwise there will be little room for the page content. 
 
-Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
+#### Creating a menubar data file
 
-1. Look at [the template source](https://github.com/pages-themes/architect/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
-2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
-    ```yml
-    github:
-      zip_url: http://example.com/download.zip
-      another_url: another value
-    ```
-3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
+Create a data file in the _data directory and use the following format (if using yml)
 
-*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
+```yml
+- label: Example Menu
+  items:
+    - name: Home
+      link: /
+    - name: Pages
+      link: #
+      items:
+        - name: Page With Sidebar 
+          link: /page-1/
+        - name: Page Without Sidebar
+          link: /page-2/
+        - name: Page With Menubar
+          link: /page-3/
+    - name: Blog
+      link: /blog/
+```
 
-For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
+For the current page to have an active class, ensure the `link:` format matches your [permalink](https://jekyllrb.com/docs/permalinks/#extensionless-permalinks) format. The above example will work with `permalink: pretty` setting in your `_config.yml`
 
-## Roadmap
+#### Multiple menus
 
-See the [open issues](https://github.com/pages-themes/architect/issues) for a list of proposed features (and known issues).
+You may make multiple menus in the same file, separated by the label
 
-## Project philosophy
+```yml
+- label: Menu Label
+  items:
+    - name: Example item
+      link: /example-item/
+- label: Second Menu Label
+  items:
+    - name: Parent Item
+      link: /parent-item/
+      items:
+        - name: Sublink 
+          link: /sublink/
+        - name: Sublink 2
+          link: /sublink2/
+- label: Third Menu Label
+  items:
+    - name: Another example item
+      link: /another-example-item/
+```
 
-The Architect theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
+### Tabs
+
+**New in 0.4**
+
+The tabs gets its content from a data file in your site's `_data` directory. Simply set the name of your data file in the page's menubar setting in the frontmatter. 
+
+```yml
+title: Page with tabs
+subtitle: Demo page with tabs
+layout: page
+show_sidebar: false
+menubar: example_menu
+tabs: example_tabs
+```
+
+Tabs can be used in conjunction with menubar and/or sidebar if you wish. 
+
+#### Creating a tabs data file
+
+Create a data file in the _data directory and use the following format (if using yml)
+
+```yml
+alignment: is-left
+style: is-boxed
+size: is-large
+items:
+  - name: Tabs
+    link: /page-4/
+    icon: fa-smile-wink
+  - name: Sidebar
+    link: /page-1/
+    icon: fa-square
+  - name: No Sidebar
+    link: /page-2/
+    icon: fa-ellipsis-v
+  - name: Menubar
+    link: /page-3/
+    icon: fa-bars
+```
+
+#### Settings
+
+You can control the alignment, style and size of the tabs by using the relevant [Bulma tabs classes](https://bulma.io/documentation/components/tabs/). 
+
+#### Active Tab Highlighting
+
+It will automatically mark the active tab based on the current page.
+
+#### Icons
+
+You can add icons to your tab by passing in the [Font Awesome icon class](https://fontawesome.com/icons?d=gallery).
+
+If you don't wish to show icons then simply omit the option from your yaml file.
+
+
+### Google Analytics 
+
+**New in 0.2**
+
+To enable Google Analytics add `google_analytics: UA-xxxxxxxx` to your `_config.yml` replacing the UA-xxxxxxxx with your Google Analytics property
+
+### Footer
+
+**New in 0.4.1**
+
+To add some footer links, create a yaml file in the `_data` directory using the following format
+
+```yml
+- name: Blog
+  link: /blog/
+- name: About
+  link: /about/
+- name: Privacy Policy
+  link: /privacy-policy/
+```
+
+Then add the name of your yaml file (without the .yml extension) into the footer_menu setting in the `_config.yml`
+
+```yml
+footer_menu: example_footer_menu
+```
+
+### Products
+
+**New in 0.5**
+
+Now you can add simple product pages to your site using collections. 
+
+#### Product pages
+
+Start by creating a `_products` directory to hold your product pages and create a new page for each product, such as `product1.md`. In the front matter for this page you can set the standard settings, such as your title, subtitle, description (for meta-description), hero_image, as well as the additional product settings such as price, product_code, image, features and rating. 
+
+```yml
+---
+title: Product 1 Name
+subtitle: Product 1 tagline here
+description: This is a product description
+hero_image: /img/hero-img.jpg
+product_code: ABC124
+layout: product
+image: https://via.placeholder.com/640x480
+price: £1.99 + VAT
+features:
+    - label: Great addition to any home
+      icon: fa-location-arrow
+    - label: Comes in a range of styles
+      icon: fa-grin-stars
+    - label: Available in multiple sizes
+      icon: fa-fighter-jet
+rating: 3
+---
+```
+
+The text you write for the page content will be displayed as the product description. 
+
+Next, add the following to your `_config.yml` to use collections to process the product pages and output them as individual pages. 
+
+```yml
+collections:
+  products: 
+    output: true
+    layout: product
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false
+```
+
+You can also set default product page values here if you like, such as the layout or image. 
+
+#### Product Reviews
+
+To add reviews to your product page, create a `reviews` directory in the `_data` directory and add a yml file with the name of the product_code from the product page, for example `_data/reviews/ABC124.yml`. Create the reviews using the following format:
+
+```yml
+- name: Mr E Xample
+  rating: 4
+  title: Great product, highly recommended
+  date: 01/01/2019
+  avatar: https://bulma.io/images/placeholders/128x128.png
+  description: >
+    The product worked really well. I would recommend this to most people to use. Delivery was quick and reasonable. 
+    Would recommend this to my friends. 
+- name: Mrs R E View
+  rating: 5
+  title: Nice, really liked this
+  date: 02/02/2019
+  description: >
+    The product worked exactly as described. 
+```
+
+If you don't want to display an avatar image then a default user icon will be displayed. If you don't want to display a rating then omit it from the yml.
+
+#### Product Category Page
+
+To create a page listing your products you will need to create a product category page. Create a page, for example `products.md`, with the `layout: product-category` in the frontmatter. You can set the sort order of the products using `sort: title` to sort by the title, or by any setting in your product pages, such as price, rating or any custom frontmatter tags you wish to set. 
+
+```yml
+---
+title: Products
+subtitle: Check out our range of products
+layout: product-category
+show_sidebar: false
+sort: title
+---
+```
 
 ## Contributing
 
-Interested in contributing to Architect? We'd love your help. Architect is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
+Bug reports and pull requests are welcome on GitHub at https://github.com/chrisrhymes/bulma-clean-theme. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-### Previewing the theme locally
+## Development
 
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
+To set up your environment to develop this theme, run `bundle install`.
 
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/architect`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-### Running tests
+## License
 
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+

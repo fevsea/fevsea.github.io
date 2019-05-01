@@ -1,0 +1,25 @@
+<div class="card">
+
+    <div class="card-content">
+      {% if post.image %}
+      <div class="mx-auto d-block">
+          <img src="{{ post.image }}" style="display: block; margin-left: auto;
+           margin-right: auto; margin-bottom: 2em" alt="{{ post.title }}">
+      </div>
+      {% endif %}
+        <div class="content">
+            {% if post.title %}
+            <h2 class="title is-4">{{ post.title}}</h2>
+            {% endif %}
+            <p>{{ post.content }}</p>
+        </div>
+        {% if post.source %}
+        <div class="has-text-centered">
+            <a href="{{ post.source}}" class="button is-primary">Go to source</a>
+        </div>
+        {% endif %}
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item" style="font-weight: bold;">{{ post.tags | join: " | " }} </p>
+    </footer>
+</div>

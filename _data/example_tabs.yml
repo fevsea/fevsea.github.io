@@ -1,0 +1,16 @@
+alignment: is-left
+style: is-boxed
+size: is-large
+items:
+  - name: Data projects
+    link: /
+    icon: fa-database
+  - name: Other projects
+    link: /projects/
+    icon: fa-project-diagram
+  - name: Talks given
+    link: /talks/
+    icon: fa-chalkboard-teacher
+  - name: Other
+    link: /other/
+    icon: fa-rocket
